@@ -1,0 +1,91 @@
+
+body {
+    font-size: 22px;
+}
+
+#kalkulacka {
+    width: 280px;
+    margin: 0 auto;
+    border: 1px gray solid;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.63);
+}
+#display {
+    text-align: right;
+    margin: 0;
+    padding: 10px;
+    overflow: hidden;
+}
+#historie {
+    font-size: 18px;
+    line-height: 18px;
+    height: 20px;
+    margin: 0;
+    color: rgb(58, 58, 58);
+    font-weight: normal;
+    text-align: right;
+
+    overflow: hidden;
+}
+#ciselnik {
+    justify-content: center;
+    background-color: #e7e7e7;
+}
+#ciselnik .radek:nth-child(-n + 2) .button, #ciselnik .button:last-child {
+    background-color: #f3f3f3;
+}
+#ciselnik .button {
+    color: #0D0D0D;
+    background-color: #FCFCFC;
+}
+#ciselnik .button:hover {
+    background-color: #c5c5c5 !important;
+}
+#ciselnik > div:last-child .button:last-child {
+    color: #293641;
+    background-color: #91C1E7;
+}
+#ciselnik > div:last-child .button:last-child:hover {
+    background-color: #62a2d6 !important;
+}
+.radek {
+    display: grid;
+    grid-template-columns: repeat(4, 70px);
+
+    text-align: center;
+    align-items: center;
+
+    height: 40px;
+    padding-left: 1px;
+}
+.button {
+    cursor: pointer;
+    user-select: none;
+
+    height: 95%;
+    width: 97%;
+    border-radius: 1px;
+    line-height: 39px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 25px;
+    border-bottom: 2px solid gray;
+}
+nav a {
+    padding: 10px;
+    text-decoration: none;
+    color: #4880ad;
+    border-bottom: 2px solid transparent;
+}
+
+table {
+    margin: 50px auto;
+    width: 280px;
+    border-collapse: collapse;
+}
+th {
+    border: 2px solid black;
+}
