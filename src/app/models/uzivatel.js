@@ -8,12 +8,21 @@ if (database.get("nextID") == null) {
 }
 
 exports.OverUzivatele = (jmeno, heslo) => {
-    
+    console.log(database.get("1"));
+
+
     return false;
 }
 
 exports.PridejUzivatele = (jmeno, heslo) => {
-    database.set(String(database.get(nextID), {
-        jmeno: jmeno, heslo: bcrypt.hashSync(heslo)
-    }));
+    console.log(database.get("nextID"));
+
+    let hash = bcrypt.hashSync(heslo);
+    let id = String(database.get("nextID"));
+
+    database.set(id, { jmeno, hash } );
+
+    database.set("nextID", database.get("nextID") + 1);
+
+    console.log(`${jmeno};${heslo}`);
 }

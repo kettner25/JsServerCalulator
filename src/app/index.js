@@ -19,6 +19,10 @@ app.use(session({
     }
 }));
 
+app.use(express.urlencoded({
+    extended: false
+}));
+
 app.get("/", (req, res) => {
     res.render("index", {
         prihlasen: req.session != undefined && req.session.Uzivatel != null && req.session.Uzivatel != ""
@@ -41,6 +45,10 @@ app.get("/login", (req, res) => {
 app.post("/login", (req, res) => {
     let jmeno = req.body.jmeno;
     let heslo = req.body.heslo;
+
+    if (jmeno == null && heslo == null) {
+        return res.redirect("/login");
+    }
 
     if (!uzivatele.OverUzivatele(jmeno, heslo)){
         return res.redirect("/login");
@@ -67,6 +75,7 @@ app.post("/register", (req, res) => {
     let kontrola = req.body.kontrolniHeslo;
 
     if (jmeno == "" || heslo == "" || heslo != kontrola){
+        console.log("heslo != heslo");
         return res.redirect("/register");
     }
 
