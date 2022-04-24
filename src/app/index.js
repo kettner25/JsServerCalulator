@@ -10,7 +10,7 @@ app.set("views", "app/views");
 app.use(express.static('app/static'));
 
 app.use(session({
-    secret: "hfsakjfhkjsahfsakhfhsafhs5454ahfsahkfhahfADkjfhkjhfhsakjfhsakjhfkjsah",
+    secret: "hfsakjfhkjsahfsakhfhsafhs5454ahfsahkfh&#×÷kjfhkjhfhsakjfhsakjhfkjsah",
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -78,6 +78,8 @@ app.post("/register", (req, res) => {
         console.log("heslo != heslo");
         return res.redirect("/register");
     }
+    if (uzivatele.OverJmenoUzivatele(jmeno))
+        return res.redirect("/register");
 
     uzivatele.PridejUzivatele(jmeno, heslo);
 

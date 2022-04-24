@@ -1,0 +1,11 @@
+{
+    "0": {
+        "jmeno": "admin",
+        "hash": "$2a$10$AgWgaoS/SYwiaySZc1IjDOgIColpkOENNqdy3IWmFzv1x9QViws2O"
+    },
+    "1": {
+        "jmeno": "lubos",
+        "hash": "$2a$10$H/NFcFncraOamrmu9JK7FO0OksAyW8DLuYO86RrFHHREsmOfCYc.K"
+    },
+    "nextID": 2
+}
