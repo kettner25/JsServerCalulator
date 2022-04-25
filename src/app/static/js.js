@@ -135,7 +135,9 @@ function ProvedOperaci() {
 
 
 function pridat(cislice) {
-    
+    fetch(`/SendStat?cislo=${cislice}`, {
+        method: "POST"
+    });
 }
 
 function reset() {

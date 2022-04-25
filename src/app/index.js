@@ -54,13 +54,13 @@ app.post("/login", (req, res) => {
         return res.redirect("/login");
     }
 
-    req.session.Uzivatel = "Ano";
+    req.session.Uzivatel = ""+jmeno;
 
     res.redirect("/kalkulacka");
 });
 
 app.get("/logout", (req, res) => {
-    if (req.session != undefined)
+    if (req.session != null)
         req.session.Uzivatel == "";
 
     res.redirect("/");
@@ -84,6 +84,19 @@ app.post("/register", (req, res) => {
     uzivatele.PridejUzivatele(jmeno, heslo);
 
     res.redirect("/login");
+});
+
+app.post("/SendStat", (req, res) => {
+    let cislo = req.url.split("=")[1];
+
+    console.log(cislo);
+
+    if (req.session.Uzivatel == null || req.session.Uzivatel == "")
+        res.end();
+
+    uzivatele.ZmenStatistiku(req.session.Uzivatel, cislo);
+
+    res.end();
 });
 
 app.listen(8000, "localhost", () => {
