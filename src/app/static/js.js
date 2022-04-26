@@ -8,6 +8,10 @@ var operator = "";
 var uplatnenyOperator = "";
 var prvniCislo = 0;
 
+var zobrazStat = false;
+
+setInterval(ZiskejData, 500);
+
 $(document).ready(function () {
     $(".button").click(function () {
         const button = $(this).text();
@@ -141,9 +145,34 @@ function pridat(cislice) {
 }
 
 function reset() {
-
+    fetch(`/ResetStat`, {
+        method: "POST"
+    });
 }
 
 function statistika() {
+    zobrazStat = !zobrazStat;
 
+    if (zobrazStat) {
+        document.getElementById("statistika").style.display = "grid";
+    }
+    else {
+        document.getElementById("statistika").style.display = "";
+    }
+}
+
+function ZiskejData() {
+    fetch(`/VratStat`, {
+        method: "POST"
+    }).then(response => response.json())
+    .then(data => VykresliStat(data));
+}
+function VykresliStat(data) {
+    let pocet = document.getElementsByClassName("pocet");
+
+    data = data.split(";");
+
+    for (let i = 0; i < data.length; i++) {
+        pocet[i].innerHTML = data[i];
+    }
 }

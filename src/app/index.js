@@ -99,6 +99,26 @@ app.post("/SendStat", (req, res) => {
     res.end();
 });
 
+app.post("/ResetStat", (req, res) => {
+    if (req.session.Uzivatel == null || req.session.Uzivatel == "")
+        res.end();
+
+    uzivatele.ZmenStatistiku(req.session.Uzivatel, 0, true);
+
+    res.end();
+});
+
+app.post("/VratStat", (req, res) => {
+    console.log(req.session.Uzivatel);
+
+    if (req.session.Uzivatel == null || req.session.Uzivatel == "")
+        res.send();
+    
+    let statistika = uzivatele.VratStatistiku(req.session.Uzivatel);
+
+    res.send(JSON.stringify(statistika));
+});
+
 app.listen(8000, "localhost", () => {
     console.log("Server is running on port 8000");
 });

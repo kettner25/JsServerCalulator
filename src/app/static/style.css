@@ -89,3 +89,24 @@ table {
 th {
     border: 2px solid black;
 }
+
+#statistika {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+
+    border: 3px solid black;
+    width: 280px;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+#statistika div {
+    border: 1px solid black;
+    
+    padding: 2px 5px;
+}
+#statistika div:nth-child(2n + 1)::before {
+    content: "číslice: ";
+}
+#statistika div:nth-child(2n)::after {
+    content: "×";
+}

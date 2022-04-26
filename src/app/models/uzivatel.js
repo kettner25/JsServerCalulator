@@ -70,7 +70,7 @@ exports.PridejUzivatele = (jmeno, heslo) => {
     console.log(`${jmeno};${heslo}`);
 }
 
-exports.ZmenStatistiku = (jmeno, cislo) => {
+exports.ZmenStatistiku = (jmeno, cislo, reset = false) => {
     let data = DBToArray();
 
     if (data.map(u => u.jmeno).indexOf(jmeno) < 0)
@@ -83,6 +83,10 @@ exports.ZmenStatistiku = (jmeno, cislo) => {
 
     let cisla = stat.split(";");
     cisla[cislo] = "" + (Number(cisla[cislo]) + 1);
+
+    if (reset) {
+        cisla = ["0","0","0","0","0","0","0","0","0","0"];
+    }
 
     let statistika = "";
 
@@ -97,5 +101,14 @@ exports.ZmenStatistiku = (jmeno, cislo) => {
 }
 
 exports.VratStatistiku = (jmeno) => {
+    let data = DBToArray();
 
+    if (data.map(u => u.jmeno).indexOf(jmeno) < 0)
+        return;
+
+    let index = data.map(u => u.jmeno).indexOf(jmeno);
+
+    let statistika = data.map(u => u.statistika)[index];
+
+    return statistika;
 }
