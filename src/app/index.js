@@ -60,8 +60,8 @@ app.post("/login", (req, res) => {
 });
 
 app.get("/logout", (req, res) => {
-    if (req.session != null)
-        req.session.Uzivatel == "";
+    if (req.session.Uzivatel != null)
+        req.session.Uzivatel = "";
 
     res.redirect("/");
 });
